@@ -1,18 +1,3 @@
---Crisis Event Impact (Joins & Subqueries)
-
---Q: What was the average GDP growth in years with a banking crisis vs. years without?
-
---Use: LEFT JOIN between macro_gdp and crisis_events filtered on crisis type
-
---Use conditional aggregation with CASE WHEN
-
-Select rgdp , crisis_type
-from macro_gdp a
-left join crisis_events b
-on a.year = b.year
-;
-
-
 -- In which years did real GDP shrink (i.e., a recession year), 
 -- and how many economic crises occurred in the 5 years leading up to and including that year?"
 --Skills : CASE , WINDOW FUNCTION, CTE 
@@ -37,3 +22,15 @@ gdp_calc AS (
 SELECT *
 FROM gdp_calc
 WHERE gdp_growth < 0;
+
+
+--Q: What was the average GDP growth in years with a banking crisis vs. years without?
+--Use: LEFT JOIN between macro_gdp and crisis_events filtered on crisis type
+--Use conditional aggregation with CASE WHEN
+
+Select rgdp , crisis_type
+from macro_gdp a
+left join crisis_events b
+on a.year = b.year
+;
+
