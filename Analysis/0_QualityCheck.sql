@@ -1,13 +1,8 @@
---4. Data Quality Checks (Subqueries & EXISTS)
 --Q: Are there any years missing data in critical tables like macro_gdp or macro_trade?
 
---Use: EXISTS or NOT EXISTS with correlated subqueries
-
-
-
---Q: List years present in macro_years but missing from macro_money_supply.
-
---Use: LEFT JOIN + WHERE money_supply.year IS NULL
-
-
-
+select * 
+from macro_money_supply
+where m0 is null or 
+m1 is null or
+m2 is null or
+m3 is null ; 
