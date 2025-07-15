@@ -1,4 +1,5 @@
--- Compare GDP or inflation between consecutive years (year vs year-1)
+-- Compare GDP or inflation between consecutive years (year vs year-1) 
+-- USA from 2001 - 2024 , since 2000 has no data to compare to, I chose to remove that row
 -- Skills:  Advanced Joins 
 SELECT
   curr.year,
