@@ -37,3 +37,6 @@ CROSS JOIN LATERAL (
     ('May', may), ('Jun', jun), ('Jul', jul), ('Aug', aug),
     ('Sep', sep), ('Oct', oct), ('Nov', nov), ('Dec', dec)
 ) AS m(month, unemployment_rate);
+
+-- Step 5 : Drop Wide Table (optional)
+DROP TABLE unemployment_wide; 
