@@ -16,9 +16,9 @@ CREATE TABLE unemployment_wide (
 );
 
 -- Step 2: Populate the Wide Table
--- Step 3: Create the Long Table
+-- Step 3: Create the Long Table (while connecting it to the other tables)
 CREATE TABLE unemployment_long (
-  year INTEGER,
+  year INT REFERENCES macro_years(year),
   month TEXT,
   unemployment_rate FLOAT,
   PRIMARY KEY (year, month)
