@@ -1,4 +1,5 @@
 -- Compare GDP or inflation between consecutive years (year vs year-1)
+-- Skills:  Advanced Joins 
 SELECT
   curr.year,
   curr.rGDP,
