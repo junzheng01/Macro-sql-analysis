@@ -1,0 +1,69 @@
+CREATE TABLE macroeconomic_data (
+    "countryname" TEXT,
+    "ISO3" CHAR(3),
+    "id" CHAR(3),
+    "year" INTEGER,
+
+    "nGDP" NUMERIC,
+    "rGDP" NUMERIC,
+    "rGDP_pc" NUMERIC,
+    "rGDP_USD" NUMERIC,
+    "deflator" NUMERIC,
+
+    "cons" NUMERIC,
+    "rcons" NUMERIC,
+    "cons_GDP" NUMERIC,
+
+    "inv" NUMERIC,
+    "inv_GDP" NUMERIC,
+    "finv" NUMERIC,
+    "finv_GDP" NUMERIC,
+
+    "exports" NUMERIC,
+    "exports_GDP" NUMERIC,
+    "imports" NUMERIC,
+    "imports_GDP" NUMERIC,
+
+    "CA" NUMERIC,
+    "CA_GDP" NUMERIC,
+    "USDfx" NUMERIC,
+    "REER" NUMERIC,
+
+    "govexp" NUMERIC,
+    "govexp_GDP" NUMERIC,
+    "govrev" NUMERIC,
+    "govrev_GDP" NUMERIC,
+    "govtax" NUMERIC,
+    "govtax_GDP" NUMERIC,
+    "govdef" NUMERIC,
+    "govdef_GDP" NUMERIC,
+    "govdebt" NUMERIC,
+    "govdebt_GDP" NUMERIC,
+
+    "HPI" NUMERIC,
+    "CPI" NUMERIC,
+    "infl" NUMERIC,
+
+    "pop" BIGINT,
+    "unemp" NUMERIC,
+    "strate" NUMERIC,
+    "ltrate" NUMERIC,
+    "cbrate" NUMERIC,
+
+    "M0" NUMERIC,
+    "M1" NUMERIC,
+    "M2" NUMERIC,
+    "M3" NUMERIC,
+    "M4" NUMERIC,
+
+    "SovDebtCrisis" SMALLINT,
+    "CurrencyCrisis" SMALLINT,
+    "BankingCrisis" SMALLINT,
+
+    "nGDP_USD" NUMERIC,
+    "cons_USD" NUMERIC,
+    "inv_USD" NUMERIC,
+    "finv_USD" NUMERIC,
+    "imports_USD" NUMERIC,
+    "exports_USD" NUMERIC
+);
