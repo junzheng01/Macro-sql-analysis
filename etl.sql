@@ -1,4 +1,4 @@
---unnnormalized data: populating my tables
+-- STAGING , unnnormalized data: populating my tables
 CREATE TABLE us_macro_data (
     countryname VARCHAR(15) NOT NULL,
     id VARCHAR(3),
