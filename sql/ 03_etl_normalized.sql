@@ -115,5 +115,8 @@ SELECT
 FROM us_macro_data
 WHERE CurrencyCrisis IS TRUE;
 
---staging table no longer needed
+ ===============================================
+-- Cleanup: Clear staging table after ETL completes
+-- ===============================================
+    
 TRUNCATE TABLE us_macro_data;
