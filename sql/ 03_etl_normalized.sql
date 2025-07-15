@@ -114,3 +114,6 @@ SELECT
     'Currency'
 FROM us_macro_data
 WHERE CurrencyCrisis IS TRUE;
+
+--staging table no longer needed
+TRUNCATE TABLE us_macro_data;
