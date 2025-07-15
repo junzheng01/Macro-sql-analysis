@@ -39,8 +39,25 @@ order by month_num asc
 --Use: LEFT JOIN between macro_gdp and crisis_events filtered on crisis type
 --Use conditional aggregation with CASE WHEN
 
-Select rgdp , crisis_type
+
+select avg(rgdp ) 
+from ( 
+Select rgdp , crisis_type 
 from macro_gdp a
 left join crisis_events b
 on a.year = b.year
+where crisis_type is null
+) 
+
+union
+
+select avg(rgdp) 
+from ( 
+Select rgdp , crisis_type 
+from macro_gdp a
+left join crisis_events b
+on a.year = b.year
+where crisis_type is not null
+)
+
 ;
