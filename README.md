@@ -1,7 +1,7 @@
 # Underconsutrction (Current Project)
-# Global Macro Insights: Advanced SQL Analytics on Crises & Recovery (2000–2025) 
+# National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2000–2025) 
 
-This project explores global economic trends and crisis patterns using advanced SQL techniques on data from [GlobalMacroData.com](https://www.globalmacrodata.com/data.html). It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
+This project explores economic trends and crisis patterns using advanced SQL techniques on data from [GlobalMacroData.com](https://www.globalmacrodata.com/data.html). It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
 
 ---
 
@@ -26,14 +26,7 @@ This project explores global economic trends and crisis patterns using advanced 
 
 This project uses a **3-table normalized schema**:
 
-### 1. `countries`
-| Column | Type | Description |
-|--------|------|-------------|
-| `country_id` | INT (PK) | Unique ID |
-| `countryname` | TEXT | Country full name |
-| `ISO3` | TEXT | 3-letter country code |
-
-### 2. `macro_indicators`
+###  `macro_indicators`
 | Column | Type | Description |
 |--------|------|-------------|
 | `indicator_id` | INT (PK) |
@@ -41,7 +34,7 @@ This project uses a **3-table normalized schema**:
 | `year` | INT |
 | `rGDP`, `infl`, `govdebt_GDP`, ... | FLOAT | Economic indicators |
 
-### 3. `crisis_events` (optional, derived)
+###  `crisis_events` (optional, derived)
 | Column | Type | Description |
 |--------|------|-------------|
 | `event_id` | INT (PK) |
@@ -65,50 +58,3 @@ This project uses a **3-table normalized schema**:
 |  Optional: Indexing, Role Management | Performance + governance for production
 
 ---
-
-##  Key Business/Analysis Questions (To Implement in `/queries/`)
-
-Each one lists skills you’ll practice. Try writing each yourself first!
-
-### 1. Which countries had the fastest real GDP recovery after the 2008 crisis?
--  *Skills:* `LAG()`, `RANK() OVER`, `CTE`, `CASE`, `PERCENT_CHANGE`
-
----
-
-### 2. Which countries had overlapping crises (banking + sovereign debt)?
--  *Skills:* `UNION ALL`, filtering, `JOIN`, data transformation
-
----
-
-### 3. Which years saw the most global crises across countries?
--  *Skills:* `GROUP BY`, subqueries, `SUM(CASE WHEN...)`
-
----
-
-### 4. How does inflation correlate with unemployment over time?
--  *Skills:* `JOIN`, `CORRELATION` (or export to BI tool), `ROLLING AVG`, `LAG()`
-
----
-
-### 5. Which countries run the highest trade surpluses (exports - imports as % of GDP)?
--  *Skills:* `CTE`, `RANK() OVER`, arithmetic
-
----
-
-### 6. What are 3-year rolling averages of inflation for each country?
--  *Skills:* `WINDOW FRAME: ROWS BETWEEN`, `PARTITION BY`
-
----
-
-### 7. How did government debt change during and after crisis years?
--  *Skills:* `CASE`, `FILTER`, subqueries, `OUTER JOIN` with `crisis_events`
-
----
-
-### 8. Which countries consistently increased consumption as a % of GDP?
--  *Skills:* `CTE`, `WINDOW FUNCTION`, `CASE`, `AVG()`
-
----
-
-## Tableau Dashboard
-
