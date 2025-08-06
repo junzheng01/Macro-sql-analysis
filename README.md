@@ -1,7 +1,7 @@
 # Underconsutrction (Current Project)
 # National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2000–2025) 
 
-This project explores economic trends and crisis patterns using advanced SQL techniques on data from [GlobalMacroData.com](https://www.globalmacrodata.com/data.html). It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
+This project explores economic trends and crisis patterns using advanced SQL techniques on data from [GlobalMacroData.com](https://www.globalmacrodata.com/data.html) and Unemployment Rate (Data Folder). It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
 
 ---
 
