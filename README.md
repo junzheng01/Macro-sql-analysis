@@ -24,7 +24,7 @@ This project explores economic trends and crisis patterns using advanced SQL tec
 
 ##  Database Schema Design
 
-This project uses a **6-table normalized schema**:
+This project uses a **7-table normalized schema**:
 
 ###  `macro_years`
 
@@ -105,6 +105,15 @@ Tracks economic crises by year and type.
 |---------------|------|---------------------------------------------------|
 | `year`        | INT  | Foreign key to `macro_years(year)`               |
 | `crisis_type` | TEXT | Type of crisis: `Banking`, `Sovereign`, or `Currency` |
+
+### `unemployment_long`
+
+| Column | Type           | Description                    |
+|--------|----------------|--------------------------------|
+| `year` | INT            | References, Primary key to `macro_years`  |
+| `month`   | TEXT  | Primary Key              |
+|  `month_num` | INT  | Month in Digit           |
+| `unemployment_rate`   | FLOAT  | Percent  |
 
 ## 🛠️ SQL Techniques Demonstrated
 
