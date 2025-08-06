@@ -1,7 +1,7 @@
 # Underconsutrction (Current Project)
 # National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2000–2025) 
 
-This project explores economic trends and crisis patterns using advanced SQL techniques on data from [GlobalMacroData.com](https://www.globalmacrodata.com/data.html) and Unemployment Rate (Data Folder). It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
+This project explores economic trends and crisis patterns using advanced SQL techniques on data from [GlobalMacroData.com (https://www.globalmacrodata.com/data.html) and [bls.gov] (https://data.bls.gov/timeseries/LNS14000000). It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
 
 ---
 
@@ -19,6 +19,10 @@ This project explores economic trends and crisis patterns using advanced SQL tec
 - Source: Global Macro Data — time-series macroeconomic indicators for 150+ countries
 - Coverage: 1950–2025 (but focus analysis on 2000–2025 for relevance)
 - Size: ~58,000 rows, 56 columns
+
+- Source: Bureau of Labor Statistics (BLS) monthly unemployment rate (U‑3), derived from the Current Population Survey.
+- Period: January 2000 through December 2024, seasonally adjusted U‑3 unemployment rate for the U.S.
+- Size 26 rows, 13 columns
 
 ---
 
