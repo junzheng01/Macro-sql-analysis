@@ -18,7 +18,7 @@ It simulates the kind of deep analytical work a **data analyst or business analy
 
 ---
 
-##  Dataset
+##  Datasets
 
 - Source: Global Macro Data — time-series macroeconomic indicators for 150+ countries
 - Coverage: 1950–2025 (but focus analysis on 2000–2025 for relevance)
