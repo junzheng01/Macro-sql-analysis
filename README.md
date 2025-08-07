@@ -119,7 +119,7 @@ Tracks economic crises by year and type.
 |  `month_num` | INT  | Month in Digit           |
 | `unemployment_rate`   | FLOAT  | Percent  |
 
-## POSGRESSQL Techniques Demonstrated
+## POSTGRESQL Techniques Demonstrated
 
 | Technique | Where Used |
 |----------|------------|
