@@ -135,15 +135,6 @@ Tracks economic crises by year and type.
 
 ---
 
-## Key Analyses
-
-- **Crisis Detection**: Identify country-years with simultaneous GDP decline and inflation spike  
-- **Recovery Duration**: Time from GDP trough to full recovery by country  
-- **Correlation Patterns**: Inflation vs. unemployment (Phillips curve)  
-- **Missing Data Audit**: Track NULLs over time and across countries  
-
----
-
 ## Insights
 | Query             | What it Shows                                       | Key Insight                               |
 |-------------------|-----------------------------------------------------|-------------------------------------------|
