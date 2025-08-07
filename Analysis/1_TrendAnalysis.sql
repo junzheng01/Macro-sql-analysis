@@ -1,73 +1,52 @@
--- Q.1: Compare GDP (rGDP, accounts for inflation) between consecutive years (2000-2024) 
--- Skills:  Advanced Joins 
-SELECT
-  curr.year,
-  curr.rGDP,
-  prev.rGDP AS prev_rGDP,
-  curr.rGDP - prev.rGDP AS rGDP_change
-FROM macro_gdp curr
-LEFT JOIN macro_gdp prev 
-ON curr.year = prev.year + 1
-ORDER BY curr.year;
----Insight:  
---- The 2008 Financial Crisis 
---- 2008: rgdp_change: 17065.00 
---- 2009: rgdp_change: -387545.00
---- 2010: rgdp_change: 394954.00
+-- Q.1: Compare GDP (rGDP, accounts for inflation) between consecutive years (2001–2024)
+-- Skills: Advanced Joins, CTEs, CASE, Percentage Calculations
 
---- The COVID-19 Pandemic     
---- 2019: rgdp_change: 446538.00, 
---- 2020: rgdp_change: -410526.00
---- 2021: rgdp_change:1051938.00
-
----Q.1.A: Compare the rgdp_change with the average rgdp_change 
----       (excludes the negative as crisises are not a "normal" account of rgdp) 
-SELECT 
-AVG(rgdp_change) AS rgdp_avg
-FROM(
-SELECT
-curr.year, 
-CASE 
-WHEN curr.rGDP - prev.rGDP > 0 THEN curr.rGDP - prev.rGDP
-ELSE 0
-END AS rgdp_change
-FROM macro_gdp curr
-LEFT JOIN macro_gdp prev 
-ON curr.year = prev.year + 1
-ORDER BY curr.year
-OFFSET 1
-);
---- rgdp_avg : 363934.333333333333
-
-
-
-
-
-
-
-
-
---Q.2: How has GDP growth (rGDP) trended over the last 10 years?
---Skills: CTE + Window Functions LAG() 
-
-WITH yearly_gdp_stats AS(SELECT year , rgdp, LAG(rgdp, 1) OVER(ORDER BY year) prev_rgdp,
-ROUND((rgdp - LAG(rgdp, 1) OVER(ORDER BY year) )*100 / rgdp , 2) GDP_Change_Pct
-from macro_gdp)
-
-SELECT ROUND(avg(gdp_change_pct), 2) Pct_10Years
-from yearly_gdp_stats
-where year BETWEEN 2014 and 2024
-; 
--- A : rGDP has averaged a 2.26% growth 
-
--- Rank years by inflation rate and highlight years in the top 10%.
--- SKills : RANK(), PERCENT_RANK(), CTE 
-WITH percentile AS (select RANK() OVER (ORDER BY infl_pct DESC) , year , infl_pct,
-PERCENT_RANK() OVER (ORDER BY infl_pct) AS percentile_infl
-from macro_years)
-
+-- Step 1: Year-over-year rGDP change and percent change, plus Crisis Flag
+WITH rgdp_change AS (
+  SELECT
+    curr.year,
+    curr.rGDP,
+    prev.rGDP AS prev_rGDP,
+    curr.rGDP - prev.rGDP AS rGDP_change,
+    ROUND(100.0 * (curr.rGDP - prev.rGDP)/prev.rGDP, 2) AS rgdp_pct_change,
+    CASE 
+      WHEN (curr.rGDP - prev.rGDP)/prev.rGDP < -0.02 THEN 'CRISIS'
+      ELSE 'STABLE'
+    END AS crisis_flag
+  FROM macro_gdp curr
+  LEFT JOIN macro_gdp prev 
+    ON curr.year = prev.year + 1
+  WHERE prev.rGDP IS NOT NULL
+)
+-- Use -2% threshold for significant contraction; adjust as needed for sensitivity
+-- Step 2: Select everything and order
 SELECT * 
-from percentile
-where percentile_infl >= .90
-ORDER BY rank asc
-;
+FROM rgdp_change
+ORDER BY year;
+
+-- Step 3: Average rGDP change 
+SELECT 
+  ROUND(AVG(curr.rGDP - prev.rGDP), 2) AS avg_rgdp_all_years
+FROM macro_gdp curr
+JOIN macro_gdp prev ON curr.year = prev.year + 1;
+
+--Insight:  
+-- The 2008–2009 Financial Crisis and 2020 COVID-19 Pandemic caused large contractions.
+-- In 2021, the economy rebounded with GDP growth over $1.05T, far above the long-run average.
+-- We benchmarked GDP performance both with and without crisis years to better understand volatility vs. normal trends.
+-- The 2008 Financial Crisis 
+-- 2008: rgdp_change: 17065.00     rgdp_avg : 330681.375000000000
+-- 2009: rgdp_change: -387545.00   rgdp_avg : 330681.375000000000
+-- 2010: rgdp_change: 394954.00    rgdp_avg : 330681.375000000000
+
+-- The COVID-19 Pandemic     
+-- 2019: rgdp_change: 446538.00    rgdp_avg : 330681.375000000000
+-- 2020: rgdp_change: -410526.00   rgdp_avg : 330681.375000000000
+-- 2021: rgdp_change: 1051938.00   rgdp_avg : 330681.375000000000
+ 
+
+
+
+
+
+
