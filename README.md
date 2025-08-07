@@ -1,4 +1,3 @@
-# Underconsutrction (Current Project)
 # National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2000–2024) 
 
 This project explores economic trends and crisis patterns using advanced SQL techniques on data from 
