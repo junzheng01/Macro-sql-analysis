@@ -20,12 +20,12 @@ Understand how macroeconomic conditions evolve over time and impact national eco
 
 ##  Dataset Overview
 
-- Source: Global Macro Data — time-series macroeconomic indicators for 150+ countries
+Source: Global Macro Data — time-series macroeconomic indicators for 150+ countries
 - Coverage: 1950–2025 (but focus analysis on 2000–2024 for relevance)
 - Size: ~58,000 rows, 56 columns
 - Stores values in the **Millions**
 
-- Source: Bureau of Labor Statistics (BLS) monthly unemployment rate (U‑3), derived from the Current Population Survey.
+Source: Bureau of Labor Statistics (BLS) monthly unemployment rate (U‑3), derived from the Current Population Survey.
 - Period: January 2000 through December 2024, seasonally adjusted U‑3 unemployment rate for the U.S.
 - Size 26 rows, 13 columns
 
