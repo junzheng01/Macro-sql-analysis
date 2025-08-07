@@ -1,4 +1,4 @@
-# National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2000–2024) 
+# National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2001–2024) 
 
 This project explores economic trends and crisis patterns using advanced SQL techniques on data from 
 - [GlobalMacroData.com](https://www.globalmacrodata.com/data.html)
