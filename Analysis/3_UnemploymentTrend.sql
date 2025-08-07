@@ -1,11 +1,22 @@
---Q2. Compare GDP Growth and Unemployment
--- Skills: Dual column comparison + basic correlation interpretation
-SELECT 
+--Q1. Has unemployment returned to pre-crisis levels? 
+-- Skill: Window function LAG(), CTE
+WITH unemp_trend AS (
+  SELECT
+    year,
+    unemp_pct,
+    LAG(unemp_pct) OVER (ORDER BY year) AS prev_unemp
+  FROM macro_years
+  WHERE year >= 2000
+)
+SELECT
   year,
-  ROUND(rgdp - LAG(rgdp) OVER (ORDER BY year), 2) AS gdp_change,
-  ROUND(unemployment_rate - LAG(unemployment_rate) OVER (ORDER BY year), 2) AS unemp_change
-FROM macro_data
-WHERE country = 'United States'
-  AND year >= 2001;
+  unemp_pct,
+  prev_unemp,
+  unemp_pct - prev_unemp AS change_from_prev_year
+FROM unemp_trend
+WHERE year IN (2008, 2009, 2020, 2021);
+-- Insight: Unemployment during key economic crises 
+--          assess how long it took for unemployment to rebound
+
 
 
