@@ -9,15 +9,16 @@ It simulates the kind of deep analytical work a **data analyst or business analy
 ---
 
 ##  Goals
-
+Understand how macroeconomic conditions evolve over time and impact national economies by:
 - Normalize and structure real-world economic data for analysis
 - Practice advanced SQL (window functions, CTEs, subqueries, joins, views)
 - Identify patterns in GDP recovery, inflation, government spending, and crises
 - Build reusable SQL logic for macroeconomic dashboards and insights
+- Assessing correlation between key economic indicators (e.g. inflation vs unemployment)
 
 ---
 
-##  Datasets
+##  Dataset Overview
 
 - Source: Global Macro Data — time-series macroeconomic indicators for 150+ countries
 - Coverage: 1950–2025 (but focus analysis on 2000–2024 for relevance)
@@ -43,8 +44,6 @@ Stores baseline yearly data and acts as the anchor table for all other tables.
 | `pop`       | BIGINT       | Population of the country            |
 | `infl_pct`  | NUMERIC(5,2) | Inflation rate (%)                   |
 | `unemp_pct` | NUMERIC(5,2) | Unemployment rate (%)                |
-
-
 
 ###  `macro_gdp`
 
@@ -90,7 +89,6 @@ Captures key fiscal indicators such as expenditure, revenue, deficit, and debt.
 | `govdebt`          | NUMERIC(15,2)  | Government debt                     |
 | `govdebt_pct_GDP`  | NUMERIC(5,2)   | Gov. debt as % of GDP               |
 
-
 ###  `macro_money_supply`
 
 Represents various levels of money supply (monetary aggregates).
@@ -102,7 +100,6 @@ Represents various levels of money supply (monetary aggregates).
 | `M1`   | NUMERIC(15,2)  | M0 + demand deposits           |
 | `M2`   | NUMERIC(15,2)  | M1 + short-term time deposits  |
 | `M3`   | NUMERIC(15,2)  | M2 + large time deposits       |
-
 
 ### `crisis_events`
 
@@ -122,7 +119,7 @@ Tracks economic crises by year and type.
 |  `month_num` | INT  | Month in Digit           |
 | `unemployment_rate`   | FLOAT  | Percent  |
 
-## 🛠️ SQL Techniques Demonstrated
+## POSGRESSQL Techniques Demonstrated
 
 | Technique | Where Used |
 |----------|------------|
@@ -136,3 +133,28 @@ Tracks economic crises by year and type.
 |  Optional: Indexing, Role Management | Performance + governance for production
 
 ---
+
+## Key Analyses
+
+- **Crisis Detection**: Identify country-years with simultaneous GDP decline and inflation spike  
+- **Recovery Duration**: Time from GDP trough to full recovery by country  
+- **Correlation Patterns**: Inflation vs. unemployment (Phillips curve)  
+- **Missing Data Audit**: Track NULLs over time and across countries  
+
+---
+
+## Sample Insights
+
+>  *The U.S. recovered from the 2008 crisis faster than most G7 peers, signaling stronger financial infrastructure resilience — useful for fintech credit risk models.*  
+
+>  *Emerging markets often face a longer lag between inflation control and unemployment improvement — a key consideration for lending expansion.*  
+
+---
+## For Employers
+
+This project demonstrates:  
+- Complex SQL skills (joins, CTEs, window functions)  
+- Business-oriented thinking applied to macroeconomic data  
+- End-to-end project ownership: ETL → Analysis → Insight  
+
+Contact: [junzheng01@gmail.com](mailto:junzheng01@gmail.com)
