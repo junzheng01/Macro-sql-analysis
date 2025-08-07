@@ -1,5 +1,4 @@
--- Q: Compare GDP or inflation between consecutive years (year vs year-1) 
--- USA from 2001 - 2024 , since 2000 has no data to compare to, I chose to remove that row
+-- Q: Compare GDP (rGDP, accounts for inflation) between consecutive years (2000-2024) 
 -- Skills:  Advanced Joins 
 SELECT
   curr.year,
@@ -10,6 +9,17 @@ FROM macro_gdp curr
 LEFT JOIN macro_gdp prev 
 ON curr.year = prev.year + 1
 ORDER BY curr.year;
+---Insight:  
+--- The 2008 Financial Crisis 
+--- 2008: rgdp_change: 17065.00 
+--- 2009: rgdp_change: -387545.00
+--- 2010: rgdp_change: 394954.00
+
+--- The COVID-19 Pandemic     
+--- 2019: rgdp_change: 446538.00, 
+--- 2020: rgdp_change: -410526.00
+--- 2021: rgdp_change:1051938.00
+
 
 
 --Q: How has GDP growth (rGDP) trended over the last 10 years?
