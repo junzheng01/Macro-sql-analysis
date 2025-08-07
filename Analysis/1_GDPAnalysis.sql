@@ -45,8 +45,39 @@ JOIN macro_gdp prev ON curr.year = prev.year + 1;
 -- 2021: rgdp_change: 1051938.00   rgdp_avg : 330681.375000000000
  
 
+--Q.2: How has GDP growth (rGDP) trended over the last 10 years?
+--Skills: CTE + Window Functions LAG() 
+WITH yearly_gdp_stats AS
+(SELECT 
+year,
+rgdp,
+LAG(rgdp, 1) OVER(ORDER BY year) prev_rgdp
+FROM macro_gdp)
 
+SELECT 
+ROUND(AVG((rgdp - prev_rgdp) *100 / prev_rgdp), 2) Pct_10Years
+from yearly_gdp_stats
+where year BETWEEN 2014 and 2024
+; 
+-- A : rGDP has averaged a 2.35% growth 
 
+-- Rank years by inflation rate and highlight years in the top 10%.
+-- SKills : RANK(), PERCENT_RANK(), CTE 
+WITH percentile AS (
+SELECT 
+RANK() OVER (ORDER BY infl_pct DESC), 
+year, 
+infl_pct,
+PERCENT_RANK() OVER (ORDER BY infl_pct) AS percentile_infl
+FROM macro_years)
 
+SELECT * 
+FROM percentile
+WHERE percentile_infl >= .90
+ORDER BY rank asc
+;
+-- A:
+-- 2022	8.00%
+-- 2021	5.00%
 
 
