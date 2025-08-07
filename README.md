@@ -17,6 +17,47 @@ Understand how macroeconomic conditions evolve over time and impact national eco
 - Assessing correlation between key economic indicators (e.g. inflation vs unemployment)
 
 ---
+## PostgreSQL Techniques Demonstrated
+
+| Technique | Where Used |
+|----------|------------|
+|  CTEs (WITH clauses) | Query decomposition, temporary tables |
+|  Window Functions | Year-over-year growth, rankings, rolling averages |
+|  Subqueries | Comparative analysis, filtering |
+|  Advanced Joins | Multi-table, LEFT JOIN for missing data |
+|  Data Normalization | Entity separation (countries, indicators, crises) |
+|  Constraints & Governance | PK/FK, null handling, boolean parsing |
+|  Views | Cleaned views for dashboard export |
+|  Optional: Indexing, Role Management | Performance + governance for production
+
+---
+
+## Insights
+| Query             | What it Shows                                       | Key Insight                               |
+|-------------------|-----------------------------------------------------|-------------------------------------------|
+| 1.A rGDP compare  | 2008 Financial Crisis, Pandemic caused rGDP decline | Economy Rebounded, e.g: 2021 growth 1.05T |
+| 1.B rGDP growth   | Avg annual real GDP growth over past 10 years       | +2.35%: healthy moderate growth           |
+| 1.C infl_pct rnk  | Top 10% most inflationary years                     | Isolates macro shocks, overheated periods |
+
+
+---
+## Why this matters? 
+Macro trends influence: 
+- Credit Risk Modelining
+- Bank Lending Decisions
+- Portfolio Performance
+---
+
+## For Employers
+
+This project demonstrates:  
+- Complex SQL skills (joins, CTEs, window functions)  
+- Business-oriented thinking applied to macroeconomic data  
+- End-to-end project ownership: ETL → Analysis → Insight  
+
+Contact: [junzheng01@gmail.com](mailto:junzheng01@gmail.com)
+
+---
 
 ##  Dataset Overview
 
@@ -119,37 +160,3 @@ Tracks economic crises by year and type.
 | `month`   | TEXT  | Primary Key              |
 |  `month_num` | INT  | Month in Digit           |
 | `unemployment_rate`   | FLOAT  | Percent  |
-
-## POSTGRESQL Techniques Demonstrated
-
-| Technique | Where Used |
-|----------|------------|
-|  CTEs (WITH clauses) | Query decomposition, temporary tables |
-|  Window Functions | Year-over-year growth, rankings, rolling averages |
-|  Subqueries | Comparative analysis, filtering |
-|  Advanced Joins | Multi-table, LEFT JOIN for missing data |
-|  Data Normalization | Entity separation (countries, indicators, crises) |
-|  Constraints & Governance | PK/FK, null handling, boolean parsing |
-|  Views | Cleaned views for dashboard export |
-|  Optional: Indexing, Role Management | Performance + governance for production
-
----
-
-## Insights
-| Query             | What it Shows                                       | Key Insight                               |
-|-------------------|-----------------------------------------------------|-------------------------------------------|
-| 1.A rGDP compare  | 2008 Financial Crisis, Pandemic caused rGDP decline | Economy Rebounded, e.g: 2021 growth 1.05T |
-| 1.B rGDP growth   | Avg annual real GDP growth over past 10 years       | +2.35%: healthy moderate growth           |
-| 1.C infl_pct rnk  | Top 10% most inflationary years                     | Isolates macro shocks, overheated periods |
-
-
----
-
-## For Employers
-
-This project demonstrates:  
-- Complex SQL skills (joins, CTEs, window functions)  
-- Business-oriented thinking applied to macroeconomic data  
-- End-to-end project ownership: ETL → Analysis → Insight  
-
-Contact: [junzheng01@gmail.com](mailto:junzheng01@gmail.com)
