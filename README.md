@@ -144,13 +144,16 @@ Tracks economic crises by year and type.
 
 ---
 
-## Sample Insights
+## Insights
+| Query             | What it Shows                                       | Key Insight                               |
+|-------------------|-----------------------------------------------------|-------------------------------------------|
+| 1.A rGDP compare  | 2008 Financial Crisis, Pandemic caused rGDP decline | Economy Rebounded, e.g: 2021 growth 1.05T |
+| 1.B rGDP growth   | Avg annual real GDP growth over past 10 years       | +2.35%: healthy moderate growth           |
+| 1.C infl_pct rnk  | Top 10% most inflationary years                     | Isolates macro shocks, overheated periods |
 
->  *The U.S. recovered from the 2008 crisis faster than most G7 peers, signaling stronger financial infrastructure resilience — useful for fintech credit risk models.*  
-
->  *Emerging markets often face a longer lag between inflation control and unemployment improvement — a key consideration for lending expansion.*  
 
 ---
+
 ## For Employers
 
 This project demonstrates:  
