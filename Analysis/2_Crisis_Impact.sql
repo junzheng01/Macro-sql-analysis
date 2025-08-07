@@ -1,6 +1,6 @@
--- In which years did real GDP shrink (i.e., a recession year), 
--- and how many economic crises occurred in the 5 years leading up to and including that year?"
---Skills : CASE , WINDOW FUNCTION, CTE 
+-- Q.1 In which years did real GDP shrink (i.e., a recession year), 
+--     and how many economic crises occurred in the 5 years leading up to and including that year?"
+-- Skills : CASE , WINDOW FUNCTION, CTE 
 WITH yearly_stats AS (
   SELECT
     year,
@@ -24,7 +24,7 @@ FROM gdp_calc
 WHERE gdp_growth < 0;
 
  
---Q: How did unemployment evolve during key crises (e.g., 2008, 2020)?
+-- Q.2: How did unemployment evolve during key crises (e.g., 2008, 2020)?
 -- Skills: Join , Filter, LAG() to compare month-over-month change.
 
 SELECT c.year, month, unemployment_rate,
@@ -35,9 +35,9 @@ ON u.year = c.year
 ORDER BY month_num ASC
 ;
 
---Q: What was the average GDP growth in years with a banking crisis vs. years without?
---Use: LEFT JOIN between macro_gdp and crisis_events filtered on crisis type
---Use conditional aggregation with CASE WHEN
+-- Q.3: What was the average GDP growth in years with a banking crisis vs. years without?
+-- Use: LEFT JOIN between macro_gdp and crisis_events filtered on crisis type
+-- Use conditional aggregation with CASE WHEN
 
 SELECT avg(rgdp ) 
 FROM ( 
