@@ -5,164 +5,90 @@
 - [GlobalMacroData.com](https://www.globalmacrodata.com/data.html)
 - [Bureau of Labor Statistics (bls.gov) - U-3 Unemployment Rate](https://data.bls.gov/timeseries/LNS14000000)
 
---- 
-## Project Overview
-This project simulates an **end-to-end financial analytics workflow** that a Data Analyst or Business Analyst in **finance, consulting, or policy** might perform.  
-It integrates, cleans, and analyzes 58,000+ macroeconomic data points to uncover **GDP, inflation, and unemployment trends during major economic crises** — with an emphasis on insights that can guide **credit risk modeling** and **portfolio management decisions**.
+---
+
+## Objectives
+- **Structure & Normalize** real-world macroeconomic data for fast and reliable querying.
+- **Apply Advanced SQL** (CTEs, window functions, subqueries, conditional aggregation) to uncover key historical patterns.
+- **Identify Crisis Impacts** on GDP, unemployment, and inflation — and measure recovery timelines.
+- **Generate Insights** that inform lending thresholds, investment strategies, and economic forecasts.
 
 ---
 
-## Goals
-Understand how macroeconomic conditions evolve over time and impact national economies by:
-- Normalize and structure real-world economic data for analysis
-- Practice advanced SQL (window functions, CTEs, subqueries, joins, views)
-- Identify patterns in GDP recovery, inflation, government spending, and crises
-- Build reusable SQL logic for macroeconomic dashboards and insights
-- Assessing correlation between key economic indicators (e.g. inflation vs unemployment)
-
----
-## PostgreSQL Techniques Demonstrated
-
-| Technique | Where Used |
-|----------|------------|
-|  CTEs (WITH clauses) | Query decomposition, temporary tables |
-|  Window Functions | Year-over-year growth, rankings, rolling averages |
-|  Subqueries | Comparative analysis, filtering |
-|  Advanced Joins | Multi-table, LEFT JOIN for missing data |
-|  Data Normalization | Entity separation (countries, indicators, crises) |
-|  Constraints & Governance | PK/FK, null handling, boolean parsing |
-|  Views | Cleaned views for dashboard export |
-|  Optional: Indexing, Role Management | Performance + governance for production
+## Business Relevance
+Macroeconomic shocks directly influence:
+- **Credit Risk Models** — Adjusting approval thresholds in recessionary periods.
+- **Bank Lending Decisions** — Calibrating interest rates based on inflation spikes.
+- **Portfolio Management** — Allocating assets defensively during downturns.
+- **Policy Advisory** — Quantifying recovery lags for fiscal and monetary policy planning.
 
 ---
 
-## Insights
-| Query             | What it Shows                                       | Key Insight                               |
-|-------------------|-----------------------------------------------------|-------------------------------------------|
-| 1.A rGDP compare  | 2008 Financial Crisis, Pandemic caused rGDP decline | Economy Rebounded, e.g: 2021 growth 1.05T |
-| 1.B rGDP growth   | Avg annual real GDP growth over past 10 years       | +2.35%: healthy moderate growth           |
-| 1.C infl_pct rnk  | Top 10% most inflationary years                     | Isolates macro shocks, overheated periods |
+## Project Architecture
+**1. Data Ingestion & Staging**  
+- Loaded raw macroeconomic CSVs into a **staging table** (`us_macro_data`).
 
+**2. Data Normalization & Schema Design**  
+- Designed a **7-table normalized schema** with **PK/FK constraints** for:
+  - GDP (`macro_gdp`)
+  - Inflation & Unemployment (`macro_years`)
+  - Trade (`macro_trade`)
+  - Government Finance (`macro_government`)
+  - Money Supply (`macro_money_supply`)
+  - Crisis Events (`crisis_events`)
+  - Monthly Unemployment (`unemployment_long`)
 
----
-## Why this matters? 
-Macro trends influence: 
-- Credit Risk Modelining
-- Bank Lending Decisions
-- Portfolio Performance
+**3. ETL Processing**  
+- Extracted → Transformed → Loaded data into normalized tables.
+- Converted **wide-format** unemployment data into **long-format** for trend analysis.
 
-This analysis could inform how a credit model adjusts thresholds in recessionary signals
----
-
-## For Employers
-
-This project demonstrates:  
-- Complex SQL skills (joins, CTEs, window functions)  
-- Business-oriented thinking applied to macroeconomic data  
-- End-to-end project ownership: ETL → Analysis → Insight  
-
-Contact: [junzheng01@gmail.com](mailto:junzheng01@gmail.com)
+**4. Analysis Queries**  
+- **GDP Recovery Analysis:** Measured contractions & rebounds post-2008 and 2020.
+- **Inflation Ranking:** Identified top 10% inflationary years since 2001.
+- **Crisis Correlation:** Compared GDP growth in years with vs. without banking crises.
+- **Unemployment Trends:** Calculated time to return to pre-crisis employment levels.
 
 ---
 
-##  Dataset Overview
-
-Source: Global Macro Data — time-series macroeconomic indicators for 150+ countries
-- Coverage: 1950–2025 (but focus analysis on 2000–2024 for relevance)
-- Size: ~58,000 rows, 56 columns
-- Stores values in the **Millions**
-
-Source: Bureau of Labor Statistics (BLS) monthly unemployment rate (U‑3), derived from the Current Population Survey.
-- Period: January 2000 through December 2024, seasonally adjusted U‑3 unemployment rate for the U.S.
-- Size 26 rows, 13 columns
+## Key Insights
+| Insight | Finding | Business Implication |
+|---------|---------|----------------------|
+| GDP Recovery | Post-crisis rebound in 2021 exceeded $1.05T growth | Signals strong post-shock recovery potential |
+| Inflation Peaks | 2021 (5%) & 2022 (8%) ranked top 10% inflation years | Suggests tightening monetary policy |
+| Unemployment | Sharp rise in 2009 & 2020; recovery lag of ~2 years | Affects labor market forecasts & loan default rates |
+| Crisis Correlation | GDP averages significantly lower in crisis years | Reinforces need for stress testing models |
 
 ---
 
-##  Database Schema Design
+## Advanced SQL Techniques Used
+| Technique | Example in Project |
+|-----------|-------------------|
+| **CTEs** (`WITH`) | Breaking down GDP recovery calculations into stages |
+| **Window Functions** | `LAG()` for YoY changes, `PERCENT_RANK()` for inflation percentile |
+| **Conditional Aggregation** | Comparing GDP in crisis vs. non-crisis years |
+| **Multi-Table Joins** | Combining GDP, inflation, and crisis data in trend queries |
+| **Data Normalization** | 3NF schema to eliminate redundancy |
+| **Indexing** | Performance tuning on `year` and `crisis_type` joins |
 
-This project uses a **7-table normalized schema**:
+---
+## Repository Structure
+Macro-sql-analysis/
+│
+├── Analysis/ # Business-focused queries
+│ ├── 0_QualityCheck.sql
+│ ├── 1_GDPTrend_Analysis.sql
+│ ├── 2_Crisis_Impact.sql
+│ └── 3_UnemploymentTrend.sql
+│
+├── ETL/ # Data staging & normalization scripts
+│ ├── 01_schema_staging.sql
+│ ├── 02_schema_normalized.sql
+│ ├── 03_etl_normalized.sql
+│ └── 04_UnemployWide-Long.sql
+│
+├── data/ #  datasets
+│ ├── USA_macro.csv
+│ ├── Unemployment_rate.csv
+│ ├── schema_design.md
+└── README.md
 
-###  `macro_years`
-
-Stores baseline yearly data and acts as the anchor table for all other tables.
-
-| Column      | Type         | Description                          |
-|-------------|--------------|--------------------------------------|
-| `year`      | INT          | Primary key; represents calendar year |
-| `pop`       | BIGINT       | Population of the country            |
-| `infl_pct`  | NUMERIC(5,2) | Inflation rate (%)                   |
-| `unemp_pct` | NUMERIC(5,2) | Unemployment rate (%)                |
-
-###  `macro_gdp`
-
-Contains national and per capita GDP data, both nominal and real, along with deflator metrics.
-
-| Column        | Type           | Description                         |
-|---------------|----------------|-------------------------------------|
-| `year`        | INT            | Foreign key to `macro_years(year)` |
-| `nGDP`        | NUMERIC(15,2)  | Nominal GDP                         |
-| `rGDP`        | NUMERIC(15,2)  | Real GDP                            |
-| `rGDP_pc`     | NUMERIC(15,2)  | Real GDP per capita                 |
-| `rGDP_USD`    | NUMERIC(15,2)  | Real GDP in USD                     |
-| `deflator`    | NUMERIC(10,4)  | GDP deflator                        |
-| `nGDP_USD`    | NUMERIC(15,2)  | Nominal GDP in USD                  |
-
-###  `macro_trade`
-
-Tracks international trade metrics, including exports/imports and their relation to GDP.
-
-| Column             | Type           | Description                         |
-|--------------------|----------------|-------------------------------------|
-| `year`             | INT            | Foreign key to `macro_years(year)` |
-| `exports`          | NUMERIC(15,2)  | Export value                        |
-| `exports_pct_GDP`  | NUMERIC(5,2)   | Exports as % of GDP                 |
-| `exports_USD`      | NUMERIC(15,2)  | Exports in USD                      |
-| `imports`          | NUMERIC(15,2)  | Import value                        |
-| `imports_pct_GDP`  | NUMERIC(5,2)   | Imports as % of GDP                 |
-| `imports_USD`      | NUMERIC(15,2)  | Imports in USD                      |
-
-###  `macro_government`
-
-Captures key fiscal indicators such as expenditure, revenue, deficit, and debt.
-
-| Column             | Type           | Description                         |
-|--------------------|----------------|-------------------------------------|
-| `year`             | INT            | Foreign key to `macro_years(year)` |
-| `govexp`           | NUMERIC(15,2)  | Government expenditure              |
-| `govexp_pct_GDP`   | NUMERIC(5,2)   | Gov. expenditure as % of GDP        |
-| `govrev`           | NUMERIC(15,2)  | Government revenue                  |
-| `govrev_pct_GDP`   | NUMERIC(5,2)   | Gov. revenue as % of GDP            |
-| `govdef`           | NUMERIC(15,2)  | Government deficit                  |
-| `govdef_pct_GDP`   | NUMERIC(5,2)   | Gov. deficit as % of GDP            |
-| `govdebt`          | NUMERIC(15,2)  | Government debt                     |
-| `govdebt_pct_GDP`  | NUMERIC(5,2)   | Gov. debt as % of GDP               |
-
-###  `macro_money_supply`
-
-Represents various levels of money supply (monetary aggregates).
-
-| Column | Type           | Description                    |
-|--------|----------------|--------------------------------|
-| `year` | INT            | Foreign key to `macro_years`  |
-| `M0`   | NUMERIC(15,2)  | Physical currency              |
-| `M1`   | NUMERIC(15,2)  | M0 + demand deposits           |
-| `M2`   | NUMERIC(15,2)  | M1 + short-term time deposits  |
-| `M3`   | NUMERIC(15,2)  | M2 + large time deposits       |
-
-### `crisis_events`
-
-Tracks economic crises by year and type.
-
-| Column        | Type | Description                                       |
-|---------------|------|---------------------------------------------------|
-| `year`        | INT  | Foreign key to `macro_years(year)`               |
-| `crisis_type` | TEXT | Type of crisis: `Banking`, `Sovereign`, or `Currency` |
-
-### `unemployment_long`
-
-| Column | Type           | Description                    |
-|--------|----------------|--------------------------------|
-| `year` | INT            | References, Primary key to `macro_years`  |
-| `month`   | TEXT  | Primary Key              |
-|  `month_num` | INT  | Month in Digit           |
-| `unemployment_rate`   | FLOAT  | Percent  |
