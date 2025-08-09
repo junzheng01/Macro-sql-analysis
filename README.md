@@ -5,6 +5,34 @@
 - [GlobalMacroData.com](https://www.globalmacrodata.com/data.html)
 - [Bureau of Labor Statistics (bls.gov) - U-3 Unemployment Rate](https://data.bls.gov/timeseries/LNS14000000)
 
+--- 
+## Project Overview
+This project focuses on **U.S. macroeconomic trends** from 2000–2024, using a cleaned dataset with **26 columns** of curated economic indicators.  
+The source data (originally from GlobalMacroData) was cleaned in Excel to remove irrelevant countries and harmonize formats, resulting in a U.S.-only dataset optimized for **deep historical analysis**.
+
+---
+
+## Dataset Summary
+- **Coverage:** 2000–2024 (annual + monthly metrics)
+- **Rows:** 26 years of annual data + monthly unemployment rates
+- **Columns:** 26 key economic indicators, grouped into:
+  - GDP (nominal, real, per capita, deflator, USD conversions)
+  - Inflation & unemployment
+  - Government finance (expenditure, revenue, debt, deficit)
+  - International trade (exports, imports, % of GDP)
+  - Money supply (M0–M3)
+  - Crisis events (Banking, Sovereign, Currency)
+  - Monthly U-3 unemployment rates
+
+---
+
+## Why Focus on the U.S.?
+- Enables **high-resolution analysis** of U.S. crises such as the **2008 Financial Crisis** and **2020 COVID-19 pandemic**.
+- Supports **business-relevant metrics** for U.S. finance & fintech use cases:
+  - Lending threshold adjustments
+  - Credit risk model stress testing
+  - Inflation-driven policy scenario planning
+
 ---
 
 ## Objectives
