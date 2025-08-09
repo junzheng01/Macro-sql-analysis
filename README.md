@@ -49,6 +49,7 @@ By narrowing the scope to the **United States**, the project:
 - Enables **deep analysis** of specific economic shocks like the 2008 Financial Crisis and 2020 COVID-19 recession.
 - Demonstrates **real-world analyst workflow** — data cleaning, normalization, SQL analysis, and business interpretation.
 - Supports **business-relevant insights** for credit risk modeling, lending decisions, and economic forecasting.
+
 Business Relevance, Macroeconomic shocks directly influence:
 - **Credit Risk Models** — Adjusting approval thresholds in recessionary periods.
 - **Bank Lending Decisions** — Calibrating interest rates based on inflation spikes.
