@@ -103,25 +103,3 @@ Business Relevance, Macroeconomic shocks directly influence:
 | **Data Normalization** | 3NF schema to eliminate redundancy |
 | **Indexing** | Performance tuning on `year` and `crisis_type` joins |
 
----
-## Repository Structure
-Macro-sql-analysis/
-│
-├── Analysis/ # Business-focused queries
-│ ├── 0_QualityCheck.sql
-│ ├── 1_GDPTrend_Analysis.sql
-│ ├── 2_Crisis_Impact.sql
-│ └── 3_UnemploymentTrend.sql
-│
-├── ETL/ # Data staging & normalization scripts
-│ ├── 01_schema_staging.sql
-│ ├── 02_schema_normalized.sql
-│ ├── 03_etl_normalized.sql
-│ └── 04_UnemployWide-Long.sql
-│
-├── data/ #  datasets
-│ ├── USA_macro.csv
-│ ├── Unemployment_rate.csv
-│ ├── schema_design.md
-└── README.md
-
