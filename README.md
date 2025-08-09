@@ -18,6 +18,7 @@ It integrates, cleans, and analyzes curated **U.S.-only macroeconomic data** to 
 - **Apply Advanced SQL** (CTEs, window functions, subqueries, conditional aggregation) to uncover key historical patterns.
 - **Identify Crisis Impacts** on GDP, unemployment, and inflation — and measure recovery timelines.
 - **Generate Insights** relevant to lending thresholds, investment strategies, and economic forecasts.
+
 ---
 
 ## Dataset Summary
@@ -40,7 +41,7 @@ This project uses **cleaned, U.S.-only datasets** from 2000–2024, prepared in 
 - **Columns (13):** Year + monthly U-3 unemployment rate (Jan–Dec)
 - **Source:** U.S. Bureau of Labor Statistics (seasonally adjusted)
 - **Transformation:** Converted from wide to long format in SQL for trend analysis
-- 
+  
 ---
 
 ### Why This Matters
