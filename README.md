@@ -6,55 +6,60 @@
 - [Bureau of Labor Statistics (bls.gov) - U-3 Unemployment Rate](https://data.bls.gov/timeseries/LNS14000000)
 
 --- 
+
 ## Project Overview
-This project focuses on **U.S. macroeconomic trends** from 2001–2024, using a cleaned dataset with **26 columns** of curated economic indicators.  
-The source data (originally from GlobalMacroData) was cleaned in Excel to remove irrelevant countries and harmonize formats, resulting in a U.S.-only dataset optimized for **deep historical analysis**.
-
----
-
-## Dataset Summary
-- **Coverage:** 2000–2024 (annual + monthly metrics)
-- **Rows:** 24 years of annual data + monthly unemployment rates
-- **Columns:** 26 key economic indicators, grouped into:
-  - GDP (nominal, real, per capita, deflator, USD conversions)
-  - Inflation & unemployment
-  - Government finance (expenditure, revenue, debt, deficit)
-  - International trade (exports, imports, % of GDP)
-  - Money supply (M0–M3)
-  - Crisis events (Banking, Sovereign, Currency)
-  - Monthly U-3 unemployment rates
-
----
-
-## Why Focus on the U.S.?
-- Enables **high-resolution analysis** of U.S. crises such as the **2008 Financial Crisis** and **2020 COVID-19 pandemic**.
-- Supports **business-relevant metrics** for U.S. finance & fintech use cases:
-  - Lending threshold adjustments
-  - Credit risk model stress testing
-  - Inflation-driven policy scenario planning
+This project simulates an **end-to-end financial analytics workflow** that a Data Analyst or Business Analyst in **finance, consulting, or policy** might perform.  
+It integrates, cleans, and analyzes curated **U.S.-only macroeconomic data** to uncover **GDP, inflation, and unemployment trends during major economic crises** — with an emphasis on insights that can guide **credit risk modeling** and **portfolio management decisions**.
 
 ---
 
 ## Objectives
-- **Structure & Normalize** real-world macroeconomic data for fast and reliable querying.
+- **Structure & Normalize** cleaned U.S. economic data for efficient querying.
 - **Apply Advanced SQL** (CTEs, window functions, subqueries, conditional aggregation) to uncover key historical patterns.
 - **Identify Crisis Impacts** on GDP, unemployment, and inflation — and measure recovery timelines.
-- **Generate Insights** that inform lending thresholds, investment strategies, and economic forecasts.
-
+- **Generate Insights** relevant to lending thresholds, investment strategies, and economic forecasts.
 ---
 
-## Business Relevance
-Macroeconomic shocks directly influence:
+## Dataset Summary
+This project uses **cleaned, U.S.-only datasets** from 2000–2024, prepared in Excel before importing into PostgreSQL.
+
+### 1. USA_macro.csv
+- **Rows:** 25 years (2000–2024)
+- **Columns (33):**
+  - GDP metrics (nominal, real, per capita, deflator, USD conversions)
+  - Inflation & unemployment (annual)
+  - Government finance (expenditure, revenue, debt, deficit)
+  - International trade (exports, imports, % of GDP)
+  - Money supply (M0–M3)
+  - Crisis flags (Banking, Sovereign, Currency)
+  - USD-converted trade and GDP values
+- **Source:** GlobalMacroData.com (cleaned & U.S.-filtered)
+
+### 2. Unemployment_rate.csv
+- **Rows:** 25 years (2000–2024)
+- **Columns (13):** Year + monthly U-3 unemployment rate (Jan–Dec)
+- **Source:** U.S. Bureau of Labor Statistics (seasonally adjusted)
+- **Transformation:** Converted from wide to long format in SQL for trend analysis
+- 
+---
+
+### Why This Matters
+By narrowing the scope to the **United States**, the project:
+- Enables **deep analysis** of specific economic shocks like the 2008 Financial Crisis and 2020 COVID-19 recession.
+- Demonstrates **real-world analyst workflow** — data cleaning, normalization, SQL analysis, and business interpretation.
+- Supports **business-relevant insights** for credit risk modeling, lending decisions, and economic forecasting.
+Business Relevance, Macroeconomic shocks directly influence:
 - **Credit Risk Models** — Adjusting approval thresholds in recessionary periods.
 - **Bank Lending Decisions** — Calibrating interest rates based on inflation spikes.
 - **Portfolio Management** — Allocating assets defensively during downturns.
 - **Policy Advisory** — Quantifying recovery lags for fiscal and monetary policy planning.
-
+  
 ---
 
 ## Project Architecture
 **1. Data Ingestion & Staging**  
-- Loaded raw macroeconomic CSVs into a **staging table** (`us_macro_data`).
+- Cleaned raw macroeconomic CSVs in Excel, Pivot Tables, Filter 
+- Loaded cleaned macroeconomic CSVs into a **staging table** (`us_macro_data`).
 
 **2. Data Normalization & Schema Design**  
 - Designed a **7-table normalized schema** with **PK/FK constraints** for:
