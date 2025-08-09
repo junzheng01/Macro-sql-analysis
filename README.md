@@ -1,6 +1,6 @@
 # National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2001–2024) 
 
-**Tech Stack:** PostgreSQL, SQL, ETL, Data Modeling, Data Normalization, Performance Tuning, Tableau (optional if dashboard added)  
+**Tech Stack:** PostgreSQL, SQL, ETL, Data Modeling, Data Normalization, Performance Tuning
 **Dataset Sources:**  
 - [GlobalMacroData.com](https://www.globalmacrodata.com/data.html)
 - [Bureau of Labor Statistics (bls.gov) - U-3 Unemployment Rate](https://data.bls.gov/timeseries/LNS14000000)
