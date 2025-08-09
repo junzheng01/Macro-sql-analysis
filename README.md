@@ -7,14 +7,14 @@
 
 --- 
 ## Project Overview
-This project focuses on **U.S. macroeconomic trends** from 2000–2024, using a cleaned dataset with **26 columns** of curated economic indicators.  
+This project focuses on **U.S. macroeconomic trends** from 2001–2024, using a cleaned dataset with **26 columns** of curated economic indicators.  
 The source data (originally from GlobalMacroData) was cleaned in Excel to remove irrelevant countries and harmonize formats, resulting in a U.S.-only dataset optimized for **deep historical analysis**.
 
 ---
 
 ## Dataset Summary
 - **Coverage:** 2000–2024 (annual + monthly metrics)
-- **Rows:** 26 years of annual data + monthly unemployment rates
+- **Rows:** 24 years of annual data + monthly unemployment rates
 - **Columns:** 26 key economic indicators, grouped into:
   - GDP (nominal, real, per capita, deflator, USD conversions)
   - Inflation & unemployment
