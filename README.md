@@ -1,13 +1,18 @@
 # National Macro Insights: Advanced SQL Analytics on Crises & Recovery (2001–2024) 
-This project explores economic trends and crisis patterns using advanced SQL techniques on data from 
+
+**Tech Stack:** PostgreSQL, SQL, ETL, Data Modeling, Data Normalization, Performance Tuning, Tableau (optional if dashboard added)  
+**Dataset Sources:**  
 - [GlobalMacroData.com](https://www.globalmacrodata.com/data.html)
 - [Bureau of Labor Statistics (bls.gov) - U-3 Unemployment Rate](https://data.bls.gov/timeseries/LNS14000000)
 
-It simulates the kind of deep analytical work a **data analyst or business analyst** would perform in the finance, policy, or consulting sector.
+--- 
+## Project Overview
+This project simulates an **end-to-end financial analytics workflow** that a Data Analyst or Business Analyst in **finance, consulting, or policy** might perform.  
+It integrates, cleans, and analyzes 58,000+ macroeconomic data points to uncover **GDP, inflation, and unemployment trends during major economic crises** — with an emphasis on insights that can guide **credit risk modeling** and **portfolio management decisions**.
 
 ---
 
-##  Goals
+## Goals
 Understand how macroeconomic conditions evolve over time and impact national economies by:
 - Normalize and structure real-world economic data for analysis
 - Practice advanced SQL (window functions, CTEs, subqueries, joins, views)
